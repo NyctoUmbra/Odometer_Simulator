@@ -1,0 +1,83 @@
+/*
+	This program is used to simulate
+	when the technician resets the
+	odometer. 
+*/
+#include <iostream>
+#include <string>
+#include <unistd.h>								//#include <unistd.h> = unsigned int sleep(unsigned int seconds);
+
+using namespace std;
+
+//Function to convert Odometer miles to dashes
+string ConvertToDashes(string dashMiles)
+{
+	unsigned int i;								//used for the for-loop
+	
+	for (i = 0; i < dashMiles.length(); ++i)	//This for-loop is used to read every digit in the string
+	{
+		dashMiles[i] = '-';						//Converts miles to dashes
+		cout << dashMiles.at(i) << flush;//flush allows the dashes to output one at a time
+		sleep(1);								//sleep(n) determines how long the string delays by n seconds
+	}
+	
+	return dashMiles;
+	
+}
+//Function to convert dashed miles to zeros
+string ConvertToZeros(string& newMiles)			//The "&" causes this function to use the data from the ConvertToDashes function
+{
+	unsigned int i;
+	
+	for (i = 0; i < newMiles.length(); ++i)
+	{
+		newMiles[i] = '0';						//Converts miles to zeros
+	}
+	
+	return newMiles;
+}
+
+//Main function 
+int main()
+{
+	string userMiles;
+	
+	//Title
+	cout << "------------------------------------------------------------" << endl;
+	cout << " #######                                                    " << endl;
+	cout << " #     # #####   ####  #    # ###### ##### ###### #####     " << endl;
+	cout << " #     # #    # #    # ##  ## #        #   #      #    #    " << endl;
+	cout << " #     # #    # #    # # ## # #####    #   #####  #    #    " << endl;
+	cout << " #     # #    # #    # #    # #        #   #      #####     " << endl;
+	cout << " #     # #    # #    # #    # #        #   #      #   #     " << endl;
+	cout << " ####### #####   ####  #    # ######   #   ###### #    #    " << endl;
+	cout << "                                                            " << endl;
+	cout << "  #####                                                     " << endl;
+	cout << " #     # # #    # #    # #        ##   #####  ####  #####   " << endl;
+	cout << " #       # ##  ## #    # #       #  #    #   #    # #    #  " << endl;
+	cout << "  #####  # # ## # #    # #      #    #   #   #    # #    #  " << endl;
+	cout << "       # # #    # #    # #      ######   #   #    # #####   " << endl;
+	cout << " #     # # #    # #    # #      #    #   #   #    # #   #   " << endl;
+	cout << "  #####  # #    #  ####  ###### #    #   #    ####  #    #  " << endl;
+	cout << "------------------------------------------------------------" << endl;
+	
+	cout << "This program is used to simulate when the technician resets" << endl;
+	cout << "the odometer." << endl;
+	
+	//Initial input
+	cout << "\nPlease enter odometer miles: " << endl;	//Asks for user input
+	getline(cin, userMiles);							//Gets entire user input and stores the information to userMiles
+	cout << endl;
+	
+	cout << "Depending on the vehicle in question, you will have to follow" << endl;
+	cout << "certain procedures to reset the odometer." << endl;
+	system ("PAUSE");									//forces the code to pause until the user is ready to 
+	cout << endl;
+	ConvertToDashes(userMiles);							//Output of puting userMiles into ConvertToDashes function
+	cout << endl;
+	
+	cout << "\nCongrats, your miles have been reset: " << endl;
+	cout << ConvertToZeros(userMiles) << endl;			//Output of puting userMiles into ConvertToZeros function
+	
+	return 0;											//Ends program
+}
